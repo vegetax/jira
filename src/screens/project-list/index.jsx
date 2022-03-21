@@ -15,7 +15,7 @@ export const ProjectListScreen = () => {
   });
   const [list, setList] = useState([]);
 
-  // 把服务器上的list.JSON 变为对象存在list里
+  // 把服务器上的list.JSON 变为对象存在list里啊
   const debouncedParam = useDebounce(param, 500);
 
   useEffect(() => {
