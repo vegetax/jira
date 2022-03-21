@@ -28,7 +28,7 @@ export const ProjectListScreen = () => {
     );
   }, [debouncedParam]);
 
-  /* 把服务器上的users.JSON 变为对象存在users里
+  /* 把服务器上的users.JSON 变为对象存在users
   useEffect(() => {
     fetch(`${apiUrl}/users`).then(async (response) => {
       if (response.ok) {
