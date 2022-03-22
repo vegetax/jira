@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { List } from "./list";
 import { SearchPanel } from "./search-panel";
-import axios from "axios";
 import qs from "qs";
 import { cleanObject, useDebounce, useMount } from "utils/index";
 
@@ -19,34 +18,34 @@ export const ProjectListScreen = () => {
   const debouncedParam = useDebounce(param, 500);
 
   useEffect(() => {
-    fetch(`${apiUrl}/projects?${qs.stringify(cleanObject(param))}`).then(
+    fetch(`${apiUrl}/projects?${qs.stringify(cleanObject(debouncedParam))}`).then(
       async (response) => {
-        if (response.ok) {
-          setList(await response.json());
-        }
+        if (response.ok) { setList(await response.json()); }
       }
     );
   }, [debouncedParam]);
 
-  /* 把服务器上的users.JSON 变为对象存在users
-  useEffect(() => {
+  //把服务器上的users.JSON 变为对象存在users
+  
+  useMount(() => {
     fetch(`${apiUrl}/users`).then(async (response) => {
       if (response.ok) {
         setUsers(await response.json());
       }
     });
-  }, []); */
-
+  }
+  );
+  
   // 用axios拉取数据
-  useMount(() => {
-    axios({
-      methods: "get",
-      url: `${apiUrl}/users`,
-    }).then(function (res) {
-      setUsers(res.data);
-    });
-  });
-
+  // useMount(() => {
+  //   axios({
+  //     methods: "get",
+  //     url: `${apiUrl}/users`,
+  //   }).then(function (res) {
+  //     setUsers(res.data);
+  //   });
+  // }
+  // );
   // console.log(param);
   return (
     <div>

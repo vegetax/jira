@@ -1,6 +1,17 @@
-import React from "react";
+import { User } from "screens/project-list/search-panel";
 
-export const List = ({ users, list }) => (
+interface listProps {
+  list: Project[];
+  users: User[];
+}
+interface Project {
+  id: string;
+  name: string;
+  personId: string;
+  organization: string;
+}
+
+export const List = ({ users, list }: listProps) => (
   <table>
     <thead>
       <tr>
