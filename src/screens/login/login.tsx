@@ -11,7 +11,7 @@ export const LoginScreen = () => {
     login({ username, password }); //登陆函数
   };
   const login = (param: { username: string; password: string }) => {
-    fetch(`${apiUrl}/login`, {
+    fetch(`${apiUrl}/register`, {
       method: "post",
       headers: { "context-type": "application/json" }, //固定写法
       body: JSON.stringify(param), //fetch固定写法？
@@ -35,7 +35,7 @@ export const LoginScreen = () => {
           <input id="password" type="password" />{" "}
         </div>
 
-        <button type="submit">提交</button>
+        <button type="submit">注册</button>
       </form>
     </div>
   );
